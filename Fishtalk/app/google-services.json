@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "8258164173",
+    "firebase_url": "https://fishtalk-1d819.firebaseio.com",
+    "project_id": "fishtalk-1d819",
+    "storage_bucket": "fishtalk-1d819.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8258164173:android:a855f1fb82be06011ae084",
+        "android_client_info": {
+          "package_name": "com.example.fishtalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8258164173-1abgeplg2esb208lsfi1o093fd5ifcbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5GVKpcwO7gPrjKmRXSvD8c1ilvbbt1pU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8258164173-1abgeplg2esb208lsfi1o093fd5ifcbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
