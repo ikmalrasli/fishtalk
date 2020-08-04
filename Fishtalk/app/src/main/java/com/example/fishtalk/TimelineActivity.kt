@@ -6,9 +6,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
+import com.google.android.material.tabs.TabLayout.TabLayoutOnPageChangeListener
 
 
 class TimelineActivity : AppCompatActivity() {
@@ -21,12 +24,24 @@ class TimelineActivity : AppCompatActivity() {
         val tabLayout = findViewById<TabLayout>(R.id.tabs)
         val viewPager = findViewById<ViewPager>(R.id.viewPager);
         val adapter = PageAdapter(supportFragmentManager, tabLayout.tabCount)
-        tabLayout.addTab(tabLayout.newTab().setText("All"));
-        tabLayout.addTab(tabLayout.newTab().setText("TAG A"));
-        tabLayout.addTab(tabLayout.newTab().setText("TAG B"));
-        tabLayout.addTab(tabLayout.newTab().setText("TAG C"));
-        tabLayout.addTab(tabLayout.newTab().setText("TAG D"));
+        tabLayout.addTab(tabLayout.newTab().setText("All"))
+
+        val TAGS = listOf("TAG A", "TAG B", "TAG C", "TAG D")
+        for (x in TAGS){tabLayout.addTab(tabLayout.newTab().setText(x))}
         viewPager.adapter = adapter
+        viewPager.addOnPageChangeListener(TabLayoutOnPageChangeListener(tabLayout))
+
+        tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                viewPager.currentItem = tab.position
+                val whichtab = tab.position + 1
+                val toast = Toast.makeText(applicationContext, "TAB " + whichtab.toString() + " selected", Toast.LENGTH_SHORT)
+                toast.show()
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {}
+            override fun onTabReselected(tab: TabLayout.Tab) {}
+        })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
