@@ -1,14 +1,15 @@
 package com.example.fishtalk
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.AlarmClock
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
+
 
 class TimelineActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +18,15 @@ class TimelineActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        val tabLayout = findViewById<TabLayout>(R.id.tabs)
+        val viewPager = findViewById<ViewPager>(R.id.viewPager);
+        val adapter = PageAdapter(supportFragmentManager, tabLayout.tabCount)
+        tabLayout.addTab(tabLayout.newTab().setText("All"));
+        tabLayout.addTab(tabLayout.newTab().setText("TAG A"));
+        tabLayout.addTab(tabLayout.newTab().setText("TAG B"));
+        tabLayout.addTab(tabLayout.newTab().setText("TAG C"));
+        tabLayout.addTab(tabLayout.newTab().setText("TAG D"));
+        viewPager.adapter = adapter
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
