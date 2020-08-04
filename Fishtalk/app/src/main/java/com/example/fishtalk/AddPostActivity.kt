@@ -35,9 +35,10 @@ class AddPostActivity : AppCompatActivity() {
                 "content" to "example of content",
                 "timestamp" to "038-01-19 03:14:07",
                 "userID" to "user1idhere",
-                "postID" to "postidhere"
+                "tag" to "Tag A"
             )
             db.collection("posts")
+                //.document("tagA").collection("posts")    <--- for nested data
                 .add(post)
                 .addOnSuccessListener { documentReference ->
                     Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
