@@ -41,9 +41,7 @@ class FishrodActivity : Activity()  {
     fun fxAdd(view: View){
         val btnAdd = findViewById<Button>(R.id.btnAdd)
         val prevPage = "FishrodActivity"
-        val intent = Intent(this, AddPostActivity::class.java).apply{
-            putExtra(EXTRA_MESSAGE, prevPage)
-        }
+        val intent = Intent(this, AddPostActivity::class.java)
         startActivity(intent)
     }
 

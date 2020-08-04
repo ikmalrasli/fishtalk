@@ -9,8 +9,10 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-
+val db = Firebase.firestore
 class AddPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +20,6 @@ class AddPostActivity : AppCompatActivity() {
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        val prevPage = intent.getStringExtra(EXTRA_MESSAGE).toString()
-        Log.i("TAG","Previous page is " + prevPage)
     }
 
 
@@ -31,8 +31,26 @@ class AddPostActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.btnPost -> {
-            val toast = Toast.makeText(applicationContext, "Posted successfully!", Toast.LENGTH_SHORT)
-            toast.show()
+            val post = hashMapOf(
+                "content" to "example of content",
+                "timestamp" to "038-01-19 03:14:07",
+                "userID" to "user1idhere",
+                "postID" to "postidhere"
+            )
+            db.collection("posts")
+                .add(post)
+                .addOnSuccessListener { documentReference ->
+                    Log.d("TAG", "DocumentSnapshot added with ID: ${documentReference.id}")
+                    val toast = Toast.makeText(applicationContext, "Posted successfully!", Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+                .addOnFailureListener { e ->
+                    Log.w("TAG", "Error adding document", e)
+                    val toast = Toast.makeText(applicationContext, "An error has occured", Toast.LENGTH_SHORT)
+                    toast.show()
+                }
+
+
             true
         }
 

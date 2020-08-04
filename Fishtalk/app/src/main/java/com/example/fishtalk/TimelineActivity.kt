@@ -47,10 +47,7 @@ class TimelineActivity : AppCompatActivity() {
     //BUTTON ONCLICK FUNCTION
     fun fxAdd(view: View){
         val btnFind = findViewById<Button>(R.id.btnAdd)
-        val prevPage = "TimelineActivity"
-        val intent = Intent(this, AddPostActivity::class.java).apply{
-            putExtra(AlarmClock.EXTRA_MESSAGE, prevPage)
-        }
+        val intent = Intent(this, AddPostActivity::class.java)
         startActivity(intent)
     }
 }
