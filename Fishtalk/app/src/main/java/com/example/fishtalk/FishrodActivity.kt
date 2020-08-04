@@ -15,19 +15,19 @@ class FishrodActivity : Activity()  {
     }
 
     fun fxView(view: View){
-        val btnFind = findViewById<Button>(R.id.btnFind)
+        val btnView = findViewById<Button>(R.id.btnFind)
         val intent = Intent(this, TimelineActivity::class.java)
         startActivity(intent)
     }
 
     fun fxSettings(view: View){
-        val btnFind = findViewById<Button>(R.id.btnSettings)
+        val btnSettings = findViewById<Button>(R.id.btnSettings)
         val intent = Intent(this, SettingsActivity::class.java)
         startActivity(intent)
     }
 
     fun fxShop(view: View){
-        val btnFind = findViewById<Button>(R.id.btnShop)
+        val btnShop = findViewById<Button>(R.id.btnShop)
         val intent = Intent(this, ShopActivity::class.java)
         startActivity(intent)
     }
@@ -39,7 +39,7 @@ class FishrodActivity : Activity()  {
     }
 
     fun fxAdd(view: View){
-        val btnFind = findViewById<Button>(R.id.btnAdd)
+        val btnAdd = findViewById<Button>(R.id.btnAdd)
         val prevPage = "FishrodActivity"
         val intent = Intent(this, AddPostActivity::class.java).apply{
             putExtra(EXTRA_MESSAGE, prevPage)
