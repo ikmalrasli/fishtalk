@@ -29,6 +29,7 @@ class TimelineActivity : AppCompatActivity() {
         val TAGS = listOf("TAG A", "TAG B", "TAG C", "TAG D")
         for (x in TAGS){tabLayout.addTab(tabLayout.newTab().setText(x))}
         viewPager.adapter = adapter
+
         viewPager.addOnPageChangeListener(TabLayoutOnPageChangeListener(tabLayout))
 
         tabLayout.setOnTabSelectedListener(object : OnTabSelectedListener {
